@@ -1,0 +1,42 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+library work;
+use work.add.all;
+
+entity alu is
+port(
+  alu_A, alu_B: in std_logic_vector(15 downto 0);
+  output: out std_logic_vector(15 downto 0);
+  cin, sel: in std_logic;
+  CY, Z: out std_logic);
+end entity alu;
+
+architecture behave of alu is
+  signal output_temp: std_logic_vector(15 downto 0);
+  signal output_add: std_logic_vector(15 downto 0);
+  signal C: std_logic_vector(16 downto 1);
+begin
+  
+  ADD0: adder
+    port map(
+      A => alu_A, B => alu_B,
+      cin => cin, S => output_add, Cout => C);
+      
+  CY <= C(16);
+  
+  process(alu_A,alu_B,sel,output_add)
+  begin
+    if (sel = '0') then
+      output_temp <= output_add;
+    else
+      output_temp <= alu_A nand alu_B;
+    end if;
+  end process;
+  
+  Z <= '1' when (to_integer(unsigned(output_temp)) = 0) else '0';
+  output <= output_temp;
+
+    
+end architecture;

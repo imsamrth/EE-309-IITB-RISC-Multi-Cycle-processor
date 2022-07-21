@@ -1,0 +1,90 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity DUT is
+   port(input_vector: in std_logic_vector(27 downto 0);
+       	output_vector: out std_logic_vector(27 downto 0));
+end entity;
+
+architecture processor_instance of DUT is 
+
+
+component master_controller IS
+			PORT (
+					instruction : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+					op_code : IN STD_LOGIC_VECTOR (3 DOWNTO 0 ); 
+				func : IN STD_LOGIC_VECTOR (1 DOWNTO 0);
+					reset, clock, zero, carry, reg_inv, is_reg_set : IN STD_LOGIC;
+					
+					control_signals : OUT STD_LOGIC_vector(27 DOWNTO 0));
+	END component ;
+	
+begin
+
+   -- input/output vector element ordering is critical,
+   -- and must match the ordering in the trace file!
+   controller : master_controller
+			port map (
+					-- order of inputs Cin B A
+					
+					instruction(15) => input_vector(27),
+					instruction(14) => input_vector(26),
+					instruction(13) => input_vector(25),
+					instruction(12) => input_vector(24),
+					instruction(11) => input_vector(23),
+					instruction(10) => input_vector(22),
+					instruction(9) => input_vector(21),
+					instruction(8) => input_vector(20),
+					instruction(7) => input_vector(19),
+					instruction(6) => input_vector(18),
+					instruction(5) => input_vector(17),
+					instruction(4) => input_vector(16),
+					instruction(3) => input_vector(15),
+					instruction(2) => input_vector(14),
+					instruction(1) => input_vector(13),
+					instruction(0) => input_vector(12),
+					op_code(3) =>  input_vector(11),
+					op_code(2) =>  input_vector(10),
+					op_code(1) =>  input_vector(9),
+					op_code(0) =>  input_vector(8),
+					func(1) => input_vector(7),
+					func(0) => input_vector(6),
+				   reset => input_vector(5),
+					clock => input_vector(4),
+					zero => input_vector(3),
+					carry => input_vector(2),
+					reg_inv => input_vector(1),
+					is_reg_set => input_vector(0),
+					
+					control_signals(27) => output_vector(27),
+					control_signals(26) => output_vector(26),
+					control_signals(25) => output_vector(25),
+					control_signals(24) => output_vector(24),
+					control_signals(23) => output_vector(23),
+					control_signals(22) => output_vector(22),
+					control_signals(21) => output_vector(21),
+					control_signals(20) => output_vector(20),
+					control_signals(19) => output_vector(19),
+					control_signals(18) => output_vector(18),
+					
+					control_signals(17) => output_vector(17),
+					control_signals(16) => output_vector(16),
+					control_signals(15) => output_vector(15),
+					control_signals(14) => output_vector(14),
+					control_signals(13) => output_vector(13),
+					control_signals(12) => output_vector(12),
+					control_signals(11) => output_vector(11),
+					
+					control_signals(10) => output_vector(10),
+					control_signals(9) => output_vector(9),
+					control_signals(8) => output_vector(8),
+					control_signals(7) => output_vector(7),
+					control_signals(6) => output_vector(6),
+					control_signals(5) => output_vector(5),
+					control_signals(4) => output_vector(4),
+					
+					control_signals(3) => output_vector(3),
+					control_signals(2) => output_vector(2),
+					control_signals(1) => output_vector(1),
+					control_signals(0) => output_vector(0));
+
+end processor_instance;

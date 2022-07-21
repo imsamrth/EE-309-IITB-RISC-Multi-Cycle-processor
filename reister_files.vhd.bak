@@ -1,0 +1,133 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity register_set is
+	port (a_1 : IN STD_LOGIC_VECTOR(2 downto 0);
+	a_2 : IN STD_LOGIC_VECTOR(2 downto 0);
+	a_3 : IN STD_LOGIC_VECTOR(2 downto 0);
+	d_3 : IN STD_LOGIC_VECTOR(15 downto 0);
+	d_1 : out STD_LOGIC_VECTOR(15 downto 0);
+	d_2 : out STD_LOGIC_VECTOR(15 downto 0);
+	
+	clk : in std_logic :
+	rst : in std_logic ;
+	
+	rf_control_bit : IN STD_LOGIC_VECTOR(2 downto 0));
+end register_set ;
+
+
+architecture description of Regfile_wren is 
+ 
+component register_16bit is
+	port (d : IN STD_LOGIC_VECTOR(15 downto 0);
+				wrt : IN STD_LOGIC;
+				clr : IN STD_LOGIC;
+				clk : IN STD_LOGIC;
+				q : OUT STD_LOGIC_VECTOR(15 downto 0));
+end component ;
+
+signal signal_a1 : std_logic_vector(15 downto 0 );
+signal signal_a3 : std_logic_vector(15 downto 0 );
+signal signal_a2 : std_logic_vector(15 downto 0 );
+
+signal data_1 : std_logic_vector(15 downto 0 );\
+signal data_2 : std_logic_vector(15 downto 0 );
+signal data_3 : std_logic_vector(15 downto 0 );
+signal data_4 : std_logic_vector(15 downto 0 );
+signal data_5 : std_logic_vector(15 downto 0 );
+signal data_6 : std_logic_vector(15 downto 0 );
+signal data_7 : std_logic_vector(15 downto 0 );
+signal data_0 : std_logic_vector(15 downto 0 );
+
+
+
+register_0 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_0 );
+register_1 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_1 );
+				
+register_2 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_2 );
+				
+				register_3 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_3 );
+				
+				
+				register_4 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_4 );
+				
+				
+				
+				register_5 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_5 );
+				
+				
+				register_6 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_6 );
+				
+				
+				
+				register_7 : register_16bit is
+	port map  (d => signal_a3,
+				wrt => write_signal,
+				clr => rst,
+				clk => clk,
+				q =>  data_7 );
+
+				
+
+
+
+
+		begin
+			process ( clk, rst, a_1, a_2, a_3 , rf_control_bit )
+			begin
+			
+			
+			
+			
+			
+			
+			
+			
+			
+if clr = '1' then
+					d_1 <= "0000000000000000";
+					d_2 <= "0000000000000000";
+				elsif rising_edge(clk) then
+					if wrt = '1' then
+						d_1 <= signal_a1 ;
+						d_2 <= signal_a2 ;
+					end if;
+					end if;
+
+			end process;
+end description;
