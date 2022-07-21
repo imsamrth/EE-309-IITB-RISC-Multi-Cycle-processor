@@ -7,7 +7,7 @@ https://drive.google.com/drive/folders/1iqQrc3-VayAjAxG2FW2qYFkrJw_A1UlO?usp=sha
 https://drive.google.com/file/d/1CSy7aRLJDVnPsJQ2WhkjJZ62p7tazOjE/view?usp=sharing
 
 # Team Members:
-Harshit JAIN –20d070032
-G KAMALESH –20d070029
-Parivesh MEENA –200070055
-Samarth BANSAL – 200070073
+Harshit JAIN –20d070032 \n
+G KAMALESH –20d070029 \n
+Parivesh MEENA –200070055 \n
+Samarth BANSAL – 200070073 
