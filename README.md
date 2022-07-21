@@ -6,6 +6,8 @@ https://drive.google.com/drive/folders/1iqQrc3-VayAjAxG2FW2qYFkrJw_A1UlO?usp=sha
 &
 https://drive.google.com/file/d/1CSy7aRLJDVnPsJQ2WhkjJZ62p7tazOjE/view?usp=sharing
 
+(accessible only through LDAP)
+
 # Team Members:
 Harshit JAIN –20d070032 
 
